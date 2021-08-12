@@ -1,0 +1,62 @@
+
+R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R es un software libre y viene sin GARANTIA ALGUNA.
+Usted puede redistribuirlo bajo ciertas circunstancias.
+Escriba 'license()' o 'licence()' para detalles de distribucion.
+
+R es un proyecto colaborativo con muchos contribuyentes.
+Escriba 'contributors()' para obtener más información y
+'citation()' para saber cómo citar R o paquetes de R en publicaciones.
+
+Escriba 'demo()' para demostraciones, 'help()' para el sistema on-line de ayuda,
+o 'help.start()' para abrir el sistema de ayuda HTML con su navegador.
+Escriba 'q()' para salir de R.
+
+[Previously saved workspace restored]
+#GRADOS DE LIBERTAD
+par(mfrow=c(2,2))
+x<-seq(0,1,len=100)
+plot(x, dt(x,5), type="l", col=2, main="n=5")
+lines(x,dnorm(x),col=1,lty=2)
+plot(x, dt(x,12), type="l", col=2, main="n=12")
+lines(x,dnorm(x),col=1,lty=2)
+plot(x, dt(x,30), type="l", col=2, main="n=30")
+lines(x,dnorm(x),col=1,lty=2)
+plot(x, dt(x,45), type="l", col=2, main="n=45")
+lines(x,dnorm(x),col=1,lty=2)
+
+#T TEST
+> library(MASS)
+> data(survey)
+> fix(survey)
+> attach(survey)
+> t.test(Pulse~Sex)
+
+        Welch Two Sample t-test
+
+data:  Pulse by Sex
+t = 1.1384, df = 188.7, p-value = 0.2564
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.413139  5.269937
+sample estimates:
+mean in group Female   mean in group Male 
+            75.12632             73.19792 
+
+> t.test(Pulse~Sex, conf.level=0.99)
+
+        Welch Two Sample t-test
+
+data:  Pulse by Sex
+t = 1.1384, df = 188.7, p-value = 0.2564
+alternative hypothesis: true difference in means is not equal to 0
+99 percent confidence interval:
+ -2.479521  6.336320
+sample estimates:
+mean in group Female   mean in group Male 
+            75.12632             73.19792 
+
+> 
